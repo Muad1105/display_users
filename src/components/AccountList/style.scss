@@ -1,0 +1,69 @@
+.account-section-container {
+  font-family: Arial, Helvetica, sans-serif;
+  height: 46vw;
+  display: flex;
+  justify-content: center;
+  padding: 10vw 0 0 0;
+  background-image: linear-gradient(
+    180deg,
+    rgb(75, 73, 197) 50%,
+    rgb(255, 255, 255) 50%
+  );
+
+  .list-section {
+    background: rgb(255, 255, 255);
+    width: 38vw;
+    border-radius: 2vw;
+    z-index: 100;
+    box-shadow: 1px 1px 5px 0px rgb(114, 134, 250);
+    padding-bottom: 2vw;
+    position: relative;
+    height: 37vw;
+
+    .account-section-head {
+      font-size: 1.4vw;
+      font-weight: 500;
+      text-align: center;
+      padding: 2.2vw 0 2.2vw 0;
+      background-color: rgb(246, 246, 246);
+      border-radius: 2vw 2vw 0 0;
+      color: rgb(89, 89, 89);
+    }
+
+    .virtual-list-container {
+      position: absolute;
+      margin: 0 0.6vw;
+
+      .set-padding-to-list {
+        padding: 0 2vw;
+
+        .item-list {
+          border-bottom: 1px solid rgb(207, 207, 207);
+
+          .list-item-meta {
+            display: grid;
+            grid-template-columns: 2.5vw auto;
+            gap: 0.5vw;
+
+            .avatar-style {
+              height: 2.2vw;
+              width: 2.2vw;
+              display: grid;
+              place-items: center;
+            }
+
+            .title-style {
+              font-size: 1.2vw;
+              font-weight: 400;
+              width: 40vw;
+              display: block;
+              // padding-left: -100px;
+              text-align: left;
+              color: rgb(77, 77, 77);
+            }
+          }
+        }
+      }
+    }
+  }
+}
