@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Avatar, List, message } from "antd";
 import VirtualList from "rc-virtual-list";
-import "./style.scss";
-
 import { Link } from "react-router-dom";
+
+import "./style.scss";
 
 const url = "https://panorbit.in/api/users.json";
 

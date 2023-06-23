@@ -8,8 +8,8 @@
 .user-logged-section {
   display: grid;
   grid-template-columns: 20vw auto;
-  margin: 2.9vw;
-  height: auto;
+  margin: 3.1vw;
+  max-height: 50vw;
   gap: 1vw;
 
   .navigation_container {
