@@ -6,33 +6,64 @@ import { RiArrowDownSLine, RiArrowUpSLine } from "react-icons/ri";
 import { Avatar, List, message } from "antd";
 import VirtualList from "rc-virtual-list";
 import { Link } from "react-router-dom";
+import { AiOutlineCloseCircle } from "react-icons/ai";
+// import "./style.scss";
 
-import { useDispatch } from "react-redux";
-import { chatWithUser } from "../../../../redux/reducer";
+import { useDispatch, useSelector } from "react-redux";
 
-import "./style.scss";
+import { editChatWithUsers } from "../../../../redux/reducer";
+
+import { FaGreaterThan } from "react-icons/fa";
 
 const url = "https://panorbit.in/api/users.json";
 
-const Chats = () => {
-  const [chatUsers, setChatUsers] = useState([]);
+const UserChat = (props) => {
+  // to list the users to chat container
+  const [chatListUsers, setChatListUsers] = useState([]);
+  // set the height of List element
   const [containerHeight, setContainerHeight] = useState("");
+  // to toggle chat container
   const [showChatBox, setShowChatBox] = useState(false);
+  // present user opened
+  const [chatUser, setChatUser] = useState([]);
+  //list of users opened to chat
+  const [userListOpenToChat, setUserListOpenToChat] = useState([]);
 
   const dispatch = useDispatch();
 
+  const userListOpenedToChat = useSelector((data) => data);
+
+  useEffect(() => {}, [userListOpenedToChat]);
+
   useEffect(() => {
     fetchData();
+    console.log("userListOpenedToChat", userListOpenedToChat.user.chatUser);
+    console.log(props);
+    fetchUserChat();
+    editChatUser();
   }, []);
 
   useEffect(() => {
-    console.log(chatUsers);
-  }, [chatUsers]);
+    console.log(chatListUsers);
+  }, [chatListUsers]);
+
+  const editChatUser = () => {};
+
+  const fetchUserChat = async () => {
+    const res = await fetch(url);
+    const data = await res.json();
+    console.log(data);
+    const chatUser = data.users.filter((e, i) => {
+      return e.id == props.id;
+    });
+    console.log(chatUser);
+    setChatUser(chatUser[0]);
+  };
 
   const fetchData = () => {
     axios.get(url).then((res) => {
       console.log("res", res.data.users);
-      setChatUsers(res.data.users);
+      setChatListUsers(res.data.users);
     });
   };
 
@@ -65,8 +96,17 @@ const Chats = () => {
   };
 
   const displayUserChatbox = (e) => {
-    dispatch(chatWithUser(e));
     console.log(e);
+  };
+
+  const closeChat = () => {
+    console.log("close", userListOpenedToChat.user.chatUser);
+    const chatList = userListOpenedToChat.user.chatUser.filter((e, i) => {
+      console.log(e);
+      return e !== props.id;
+    });
+    console.log(chatList);
+    dispatch(editChatWithUsers(chatList));
   };
 
   return (
@@ -81,44 +121,39 @@ const Chats = () => {
         className={showChatBox ? "chats-nav chats-nav-bottom-0" : "chats-nav"}
       >
         <div className="chat-title">
-          <BsChatRight />
-          <p>Chats</p>
+          <img src={chatUser.profilepicture} alt="" />
         </div>
+        <div onClick={() => handleChatbox()}>{chatUser.name}</div>
         <div className="open-close-arrow" onClick={() => handleChatbox()}>
           {showChatBox ? <RiArrowUpSLine /> : <RiArrowDownSLine />}
         </div>
+        <div className="close-btn" onClick={() => closeChat()}>
+          <AiOutlineCloseCircle />
+        </div>
       </nav>
       <main className={showChatBox ? "main display-main" : "main"}>
-        <List className="list-section">
+        {/* <List className="list-section">
           <VirtualList
-            data={chatUsers}
+            data={""}
             height={containerHeight}
             itemHeight={17}
             itemKey="id"
             onScroll={onScroll}
             className="virtual-list-container"
-          >
-            {(item) => (
-              <List.Item key={item.id} className="item-list">
-                <List.Item.Meta
-                  className="list-item-meta"
-                  // open selected user chat
-                  onClick={() => displayUserChatbox(item.id)}
-                  avatar={
-                    <Avatar
-                      src={item.profilepicture}
-                      className="avatar-style"
-                    />
-                  }
-                  title={<a className="title-style">{item.name}</a>}
-                />
-              </List.Item>
-            )}
-          </VirtualList>
-        </List>
+          > */}
+        <div>chat</div>
+
+        <div className="user-chat">
+          <input type="text" />
+          <div className="go-btn">
+            <FaGreaterThan />
+          </div>
+        </div>
+        {/* </VirtualList>
+        </List> */}
       </main>
     </div>
   );
 };
 
-export default Chats;
+export default UserChat;

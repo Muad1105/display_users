@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 
 import axios from "axios";
+
+const Map = React.lazy(() => import("./miniCompenent/Map"));
 
 const url = "https://panorbit.in/api/users.json";
 
@@ -105,7 +107,11 @@ const Profile = () => {
               </div>
             </div>
           </div>
-          <div className="map">Map</div>
+          <div className="map">
+            <Suspense fallback={<div>Loading...</div>}>
+              <Map />
+            </Suspense>
+          </div>
         </div>
       </main>
     </div>

@@ -3,6 +3,7 @@
   grid-template-rows: 7vw auto;
   gap: 1vw;
 
+  //main-section-nav
   .header {
     display: flex;
     justify-content: space-between;
@@ -12,6 +13,7 @@
     text-transform: capitalize;
     font-size: 1.3vw;
     padding-bottom: 2vw;
+    position: relative;
 
     .section-head {
       font-weight: 500;
@@ -20,12 +22,76 @@
       display: flex;
       gap: 0.5vw;
 
+      &:hover {
+        cursor: pointer;
+      }
+
       img {
         width: 2vw;
         height: 2vw;
         border-radius: 50%;
       }
     }
+    //set display user details card on click name-photo class section
+    .user-data-card {
+      position: absolute;
+      right: 0;
+      top: 4vw;
+      z-index: 2;
+      background: #fff;
+      box-shadow: 1px 1px 12px 1px #a0a0a0;
+      border-radius: 1.5vw;
+      padding: 1vw 2vw;
+
+      .display-data {
+        width: 15vw;
+        height: 25vw;
+        display: flex;
+        flex-direction: column;
+        gap: 2vw;
+        justify-content: center;
+
+        img {
+          width: 5vw;
+          height: 5vw;
+          border-radius: 50%;
+        }
+
+        .user-data {
+          text-align: center;
+          p {
+            &:nth-child(1) {
+              color: #323232;
+            }
+            &:nth-child(2) {
+              color: #858585;
+              font-size: 1vw;
+            }
+          }
+        }
+
+        button {
+          width: 8vw;
+          padding: 0.5vw;
+          font-size: 1vw;
+          border-radius: 2vw;
+          background-color: #852c2c;
+          color: #fff;
+          font-weight: 600;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+  .chat-container {
+    display: grid;
+    grid-template-columns: auto 20vw;
+    gap: 1vw;
+    z-index: 2;
+
   }
 
   .user-data {
