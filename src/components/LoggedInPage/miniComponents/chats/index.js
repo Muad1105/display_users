@@ -17,7 +17,7 @@ const url = "https://panorbit.in/api/users.json";
 const Chats = () => {
   const [chatUsers, setChatUsers] = useState([]);
   const [containerHeight, setContainerHeight] = useState("");
-  const [showChatBox, setShowChatBox] = useState(false);
+  const [showChatBox, setShowChatBox] = useState(true);
 
   const dispatch = useDispatch();
 

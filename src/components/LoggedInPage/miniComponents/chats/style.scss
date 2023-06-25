@@ -2,11 +2,13 @@
   display: grid;
   grid-template-rows: 4vw 20vw;
   gap: 0;
-  max-width: 20vw;
   border: 1px solid blue;
   border-color: blue blue transparent blue;
   border-radius: 1vw 1vw 0 0;
-  margin-top: -24vw;
+  //   margin-top: -24vw;
+  bottom: 0;
+  position: fixed;
+  width: 15vw;
 
   .chats-nav {
     background-color: blue;
@@ -30,6 +32,7 @@
   }
 
   .main {
+    padding: 0 0.5vw;
     max-height: 20vw;
     overflow: scroll;
     background-color: #fff;
@@ -50,7 +53,7 @@
 }
 
 .user-chatbox {
-  display: flex;
+  display: flex !important;
   gap: 1.5vw;
 
   .chat-user-section {
@@ -107,14 +110,16 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      max-width: 100%;
 
       .user-chat {
         display: grid;
         grid-template-columns: auto 3vw;
         height: 2.5vw;
+        // max-width: ;
 
         input {
-            font-size: 1vw;
+          font-size: 1vw;
         }
 
         .go-btn {
