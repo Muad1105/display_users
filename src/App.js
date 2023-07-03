@@ -11,7 +11,7 @@ function App() {
       <Routes>
         <Route
           exact
-          path="/display_users"
+          path="/"
           element={<Navigate to="/accounts" />}
         />
         <Route path="/accounts" element={<AccountLists />} />
