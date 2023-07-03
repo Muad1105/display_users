@@ -9,7 +9,11 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route exact path="/" element={<Navigate to="/accounts" />} />
+        <Route
+          exact
+          path="/display_users"
+          element={<Navigate to="/accounts" />}
+        />
         <Route path="/accounts" element={<AccountLists />} />
         <Route path="/accounts/:id" element={<LoggedInPage />}>
           <Route path="profile" element={<LoggedInPage />} />

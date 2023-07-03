@@ -23,12 +23,12 @@ const AccountsList = () => {
 
   useEffect(() => {
     appendData();
-    setContainerHeight(window.innerWidth / 3.4);
+    setContainerHeight(window.innerWidth / 3.7);
   }, []);
 
   useEffect(() => {
     const handleResize = () => {
-      setContainerHeight(window.innerWidth / 3);
+      setContainerHeight(window.innerWidth / 3.7);
     };
 
     window.addEventListener("resize", handleResize);
