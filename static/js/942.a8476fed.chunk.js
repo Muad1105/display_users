@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkuser_lg_landing_pg=self.webpackChunkuser_lg_landing_pg||[]).push([[942],{5942:function(n,s,e){e.r(s);e(2791);var u=e(184);s.default=function(){return(0,u.jsx)("div",{className:"posts-section",children:"Coming Soon"})}}}]);
+//# sourceMappingURL=942.a8476fed.chunk.js.map
